@@ -1,0 +1,62 @@
+PATH
+  remote: .
+  specs:
+    mpesa_stk (0.1.0)
+      httparty (~> 0.15.6)
+      redis-namespace (~> 1.5, >= 1.5.3)
+      redis-rack (~> 2.0, >= 2.0.2)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
+    coderay (1.1.2)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
+    dotenv (2.2.1)
+    hashdiff (0.3.7)
+    httparty (0.15.7)
+      multi_xml (>= 0.5.2)
+    method_source (0.8.2)
+    minitest (5.11.3)
+    multi_xml (0.6.0)
+    pry (0.10.4)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-nav (0.2.4)
+      pry (>= 0.9.10, < 0.11.0)
+    public_suffix (3.0.2)
+    rack (2.0.4)
+    rake (10.5.0)
+    redis (4.0.1)
+    redis-namespace (1.6.0)
+      redis (>= 3.0.4)
+    redis-rack (2.0.4)
+      rack (>= 1.5, < 3)
+      redis-store (>= 1.2, < 2)
+    redis-store (1.4.1)
+      redis (>= 2.2, < 5)
+    safe_yaml (1.0.4)
+    slop (3.6.0)
+    webmock (3.3.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.16)
+  dotenv (= 2.2.1)
+  minitest (~> 5.0)
+  mpesa_stk!
+  pry (~> 0.10.4)
+  pry-nav (~> 0.2.4)
+  rake (~> 10.0)
+  webmock (~> 3.0, >= 3.0.1)
+
+BUNDLED WITH
+   1.16.1

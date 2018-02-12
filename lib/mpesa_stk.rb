@@ -1,5 +1,4 @@
 require "mpesa_stk/version"
-
-module MpesaStk
-  # Your code goes here...
-end
+require 'mpesa_stk/push_payment'
+require 'dotenv/load'
+require 'httparty'
