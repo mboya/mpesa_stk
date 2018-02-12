@@ -6,8 +6,8 @@ require "mpesa_stk/version"
 Gem::Specification.new do |spec|
   spec.name          = "mpesa_stk"
   spec.version       = MpesaStk::VERSION
-  spec.authors       = ["mboya"]
-  spec.email         = ["mboyaberry@gmail.com"]
+  spec.authors       = ["mboya", "cess"]
+  spec.email         = ["mboyaberry@gmail.com", "cessmbuguar@gmail.com"]
 
   spec.summary       = %q{Lipa na M-Pesa Online Payment.}
   spec.description   = %q{initiate a M-Pesa transaction on behalf of a customer using STK Push.}
