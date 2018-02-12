@@ -1,8 +1,5 @@
 # MpesaStk
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mpesa_stk`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Lipa na M-Pesa Online Payment API is used to initiate a M-Pesa transaction on behalf of a customer using STK Push. This is the same technique mySafaricom App uses whenever the app is used to make payments.
 
 ## Installation
 
@@ -22,7 +19,33 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+one needs to setup there environment variables, checkout `.sample.env`
+```
+base_url="https://sandbox.safaricom.co.ke"
+token_generator_url="/oauth/v1/generate?grant_type=client_credentials"
+process_request_url="/mpesa/stkpush/v1/processrequest"
+
+key=""
+secret=""
+business_short_code=""
+business_passkey="
+callback_url="
+```
+this can be found in [Test Credentials](https://developer.safaricom.co.ke/test_credentials)
+
+### Implementation
+
+This now becomes the easy part. After all the pieces above have been set all you need to do is:
+open your console and add.
+```
+MpesaStk::PushPayment.call("500", "<YOUR PHONE NUMBER>")
+```
+
+### Output
+
+![STK Notification](https://photos.google.com/u/1/share/AF1QipPF8cdssxur1v9Wiatg01Geb4SMf_crfgOb1jC3maEZzjn1F2-5fBQuHKuaK1WDnw/photo/AF1QipMrsrF-mmpPrZtuCVBaOEiWcTdolGVsejIxCZ3e?key=dXMxUmMzQi1vQmNsQjJNMXcxTHBDS19TVjR1NElB)
+
+
 
 ## Development
 
