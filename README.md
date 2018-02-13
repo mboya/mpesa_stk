@@ -11,11 +11,14 @@ gem 'mpesa_stk'
 
 And then execute:
 
-    $ bundle
+    $ bundle or $ bundle install
 
 Or install it yourself as:
 
     $ gem install mpesa_stk
+
+## Version
+ Mpesa_stk is currently at `1.0.0 version`
 
 ## Usage
 
@@ -32,6 +35,10 @@ business_passkey="
 callback_url="
 ```
 this can be found in [Test Credentials](https://developer.safaricom.co.ke/test_credentials)
+* `key` and `secret` of your application key.
+* `business_short_code`  and `business_pass_key` from safaricom.
+* `callback_url` the url of your application.
+
 
 ### Implementation
 
@@ -42,8 +49,8 @@ MpesaStk::PushPayment.call("500", "<YOUR PHONE NUMBER>")
 ```
 
 ### Output
-
-![STK Notification](https://photos.google.com/u/1/share/AF1QipPF8cdssxur1v9Wiatg01Geb4SMf_crfgOb1jC3maEZzjn1F2-5fBQuHKuaK1WDnw/photo/AF1QipMrsrF-mmpPrZtuCVBaOEiWcTdolGVsejIxCZ3e?key=dXMxUmMzQi1vQmNsQjJNMXcxTHBDS19TVjR1NElB)
+This is the expected output
+ ![alt tag](./bin/index.jpeg)
 
 
 
@@ -55,7 +62,15 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/mpesa_stk. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/mboya/mpesa_stk.
+
+To Contribute to this gem,
+* Comment on the issue you would like to work on solving.
+* Mark the issue as in progress by adding an `in-progress` label.
+* Fork the project to your github repository (This project only accepts PRs from forks)
+* Submit the PR after the implementation all unfinished PRs for an issue should have a WIP indicated beside it
+* Every PR should have a link to the issue being solved
+* Checkout this [github best practices](https://github.com/skyscreamer/yoga/wiki/GitHub-Best-Practices) for more info.
 
 ## License
 
@@ -63,4 +78,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the MpesaStk project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/mpesa_stk/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the MpesaStk project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/mboya/mpesa_stk/blob/master/CODE_OF_CONDUCT.md).
