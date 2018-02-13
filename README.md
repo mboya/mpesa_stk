@@ -45,7 +45,11 @@ this can be found in [Test Credentials](https://developer.safaricom.co.ke/test_c
 This now becomes the easy part. After all the pieces above have been set all you need to do is:
 open your console and add.
 ```
-MpesaStk::PushPayment.call("500", "<YOUR PHONE NUMBER>")
+require 'mpesa_stk'
+```
+
+```
+MpesaStk::PushPayment.call("500", "<YOUR PHONE NUMBER: 254711222333>")
 ```
 
 ### Output
