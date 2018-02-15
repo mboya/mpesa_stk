@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Lipa na M-Pesa Online Payment.}
   spec.description   = %q{initiate a M-Pesa transaction on behalf of a customer using STK Push.}
-  spec.homepage      = ""
+  spec.homepage      = "https://mboya.github.io/mpesa_stk/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
