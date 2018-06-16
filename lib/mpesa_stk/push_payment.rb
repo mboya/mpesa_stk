@@ -44,8 +44,8 @@ module MpesaStk
           PartyB: "#{ENV['business_short_code']}",
           PhoneNumber: "#{phone_number}",
           CallBackURL: "#{ENV['callback_url']}",
-          AccountReference: generate_bill_reference_number(20),
-          TransactionDesc: generate_bill_reference_number(20)
+          AccountReference: generate_bill_reference_number(5),
+          TransactionDesc: generate_bill_reference_number(5)
         }.to_json
       end
 
