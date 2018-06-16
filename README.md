@@ -8,54 +8,73 @@ Add this line to your application's Gemfile:
 ```ruby
 gem 'mpesa_stk'
 ```
-
-And then execute:
-
-    $ bundle or $ bundle install
+and run the `bundle install` command
 
 Or install it yourself as:
-
-    $ gem install mpesa_stk
-
-## Version
- Mpesa_stk is currently at `1.0.0 version`
-
-## Usage
-
-one needs to setup there environment variables, checkout `.sample.env`
+```ruby
+gem install mpesa_stk
 ```
-base_url="https://sandbox.safaricom.co.ke"
-token_generator_url="/oauth/v1/generate?grant_type=client_credentials"
-process_request_url="/mpesa/stkpush/v1/processrequest"
 
+# Getting Started
+This gem has a `[redis](https://redis.io/)` dependency, so make sure it running
+```ruby
+$ redis-server
+```
+
+you need to setup your environment variables, checkout `.sample.env` for the values you need.
+or run
+```ruby
+$ cp .sample.env .env
+```
+open `.env` on youe editor and add the missing variable
+```
 key=""
 secret=""
 business_short_code=""
-business_passkey="
-callback_url="
+business_passkey=""
+callback_url=""
 ```
+
+* `key` and `secret` of the app created on your [developer account](https://developer.safaricom.co.ke/user/me/apps).
 this can be found in [Test Credentials](https://developer.safaricom.co.ke/test_credentials)
-* `key` and `secret` of your application key.
 * `business_short_code`  and `business_pass_key` from safaricom.
-* `callback_url` the url of your application.
+this is the url where response will be sent
+* `callback_url` the url of your application. `make sure its a reachable/active url`
 
+## Testing
 
-### Implementation
-
-This now becomes the easy part. After all the pieces above have been set all you need to do is:
-open your console and add.
-```
-require 'mpesa_stk'
+```ruby
+$ irb
 ```
 
-```
-MpesaStk::PushPayment.call("500", "<YOUR PHONE NUMBER: 254711222333>")
+```ruby
+2.5.0 :001 > require 'mpesa_stk'
 ```
 
-### Output
-This is the expected output
- ![alt tag](./bin/index.jpeg)
+```ruby
+2.5.0 :002 > MpesaStk::PushPayment.call("500", "<YOUR PHONE NUMBER: 254711222333>")
+```
 
+expected irb output after the command
+```hash
+=> {
+    "MerchantRequestID"=>"7909-1302368-1", 
+    "CheckoutRequestID"=>"ws_CO_DMZ_40472724_16062018092359957", 
+    "ResponseCode"=>"0", 
+    "ResponseDescription"=>"Success. Request accepted for processing", 
+    "CustomerMessage"=>"Success. Request accepted for processing"
+  }
+```
+
+the above response means the response has been successfully sent to Safaricom for processing and you should be able to see the checkout/express prompt on the sender number.
+
+### Mpesa Checkout/Express
+This is the expected output on the mobile phone
+![alt tag](./bin/index.jpeg)
+
+### Callback url
+
+After the pin code is entered on the checkout/express prompt. you will receive a request on the provided  `callback_url` with the status of the action
 
 
 ## Development
