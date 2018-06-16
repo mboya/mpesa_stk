@@ -1,4 +1,4 @@
-[![Gem Version](https://badge.fury.io/rb/cancancan.svg)](http://badge.fury.io/rb/cancancan)
+[![Gem Version](https://badge.fury.io/rb/mpesa_stk.svg)](https://badge.fury.io/rb/mpesa_stk.svg)
 
 # MpesaStk
 Lipa na M-Pesa Online Payment API is used to initiate a M-Pesa transaction on behalf of a customer using STK Push. This is the same technique mySafaricom App uses whenever the app is used to make payments.
