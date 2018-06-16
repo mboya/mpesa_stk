@@ -16,7 +16,7 @@ gem install mpesa_stk
 ```
 
 # Getting Started
-This gem has a `[redis](https://redis.io/)` dependency, so make sure it running
+This gem has a [Redis](https://redis.io/) dependency, so make sure it running
 ```ruby
 $ redis-server
 ```
@@ -26,7 +26,7 @@ or run
 ```ruby
 $ cp .sample.env .env
 ```
-open `.env` on youe editor and add the missing variable
+open `.env` on your editor and add the missing variable
 ```
 key=""
 secret=""
@@ -36,10 +36,8 @@ callback_url=""
 ```
 
 * `key` and `secret` of the app created on your [developer account](https://developer.safaricom.co.ke/user/me/apps).
-this can be found in [Test Credentials](https://developer.safaricom.co.ke/test_credentials)
-* `business_short_code`  and `business_pass_key` from safaricom.
-this is the url where response will be sent
-* `callback_url` the url of your application. `make sure its a reachable/active url`
+* `business_short_code`  and `business_pass_key` this can be found in [Test Credentials](https://developer.safaricom.co.ke/test_credentials).
+* `callback_url` the url of your application where response will be sent. `make sure its a reachable/active url`
 
 ## Testing
 
@@ -57,7 +55,7 @@ $ irb
 
 expected irb output after the command
 ```hash
-=> {
+  {
     "MerchantRequestID"=>"7909-1302368-1", 
     "CheckoutRequestID"=>"ws_CO_DMZ_40472724_16062018092359957", 
     "ResponseCode"=>"0", 
