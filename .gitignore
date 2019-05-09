@@ -10,3 +10,4 @@
 .env
 .DS_Store
 *.gem
+dump.rdb
