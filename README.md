@@ -41,7 +41,19 @@ callback_url=""
 * `business_short_code`  and `business_pass_key` this can be found in [Test Credentials](https://developer.safaricom.co.ke/test_credentials).
 * `callback_url` the url of your application where response will be sent. `make sure its a reachable/active url`
 
-## Testing
+### Testing out the gem in an actual Rails application
+
+To test out the app on an actual rails application, do check out the following link:
+
+https://github.com/mboya/stk
+
+```shell
+  https://github.com/mboya/stk
+```
+#### Sample application
+Check out a rails sample application [here](https://github.com/mboya/stk)
+
+### Testing the gem on the console
 
 ```ruby
 $ irb
@@ -103,5 +115,3 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 Everyone interacting in the MpesaStk project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/mboya/mpesa_stk/blob/master/CODE_OF_CONDUCT.md).
 
-## Sample application
-Check out a rails sample application [here](https://github.com/mboya/stk)
