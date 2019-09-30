@@ -19,7 +19,7 @@ GEM
     httparty (0.15.7)
       multi_xml (>= 0.5.2)
     method_source (0.8.2)
-    minitest (5.11.3)
+    minitest (5.12.2)
     multi_xml (0.6.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
