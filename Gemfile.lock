@@ -28,7 +28,7 @@ GEM
     pry-nav (0.2.4)
       pry (>= 0.9.10, < 0.11.0)
     public_suffix (3.0.3)
-    rack (2.0.7)
+    rack (2.1.1)
     rake (10.5.0)
     redis (4.1.1)
     redis-namespace (1.6.0)
