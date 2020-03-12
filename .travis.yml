@@ -1,5 +1,17 @@
-sudo: false
 language: ruby
+
 rvm:
   - 2.4.1
-before_install: gem install bundler -v 1.16.1
+
+before_install:
+  - 'gem install bundler -v 1.16.1'
+  - 'gem update --system --conservative'
+  - 'gem update bundler --conservative'
+
+sudo: false
+
+notifications:
+  disabled: true
+
+script:
+  - bundle exec rake
