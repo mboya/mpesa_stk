@@ -18,4 +18,5 @@ jobs:
       - name: Rails Test
         run: |
           gem install bundler
+          bundle install
           bundle exec rails test
