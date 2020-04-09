@@ -4,7 +4,7 @@ module MpesaStk
   class PushPayment
     class << self
       def call(amount, phone_number)
-        new(amount, phone_number).push_payment
+        new(amount, phone_number).push_payment       
       end
     end
 
