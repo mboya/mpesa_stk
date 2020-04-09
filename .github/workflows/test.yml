@@ -7,5 +7,4 @@ jobs:
     steps:
       - name: Rake Tests
         run: |
-          gem install bundler
-          bundle exec rails test
+          rails test
