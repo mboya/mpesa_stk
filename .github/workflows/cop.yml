@@ -1,0 +1,4 @@
+name: Cop
+on: [push]
+  - name: Rubocop checks
+    uses: gimenete/rubocop-action@1.0
