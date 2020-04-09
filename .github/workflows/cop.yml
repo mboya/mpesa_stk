@@ -10,8 +10,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v2
-      - name: Set up Ruby 2.6
-        uses: actions/setup-ruby@v1
+      - uses: actions/setup-ruby@v1
         with:
           - ruby-version: '2.6'
       - name: Rails Test
