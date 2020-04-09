@@ -61,25 +61,26 @@ module MpesaStk
     def get_new_access_token
       response = HTTParty.get(url, headers: headers)
 
-      hash = JSON.parse(response.body).merge(Hash['time_stamp',Time.now.to_i])
+      hash = JSON.parse(response.body).merge(Hash['time_stamp', Time.now.to_i])
       @redis.set @key, hash.to_json
     end
 
     private
-      def url
-        "#{ENV['base_url']}#{ENV['token_generator_url']}"
-      end
 
-      def headers
-        encode = encode_credentials @key, @secret
-        headers = {
+    def url
+      "#{ENV['base_url']}#{ENV['token_generator_url']}"
+    end
+
+    def headers
+      encode = encode_credentials @key, @secret
+      headers = {
           "Authorization" => "Basic #{encode}"
-        }
-      end
+      }
+    end
 
-      def encode_credentials key, secret
-        credentials = "#{key}:#{secret}"
-        encoded_credentials = Base64.encode64(credentials).split("\n").join
-      end
+    def encode_credentials key, secret
+      credentials = "#{key}:#{secret}"
+      encoded_credentials = Base64.encode64(credentials).split("\n").join
+    end
   end
 end
