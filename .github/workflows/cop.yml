@@ -9,3 +9,6 @@ jobs:
         uses: gimenete/rubocop-action@1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Rails Test
+        run: |
+          bundle exec rake test
