@@ -19,4 +19,4 @@ jobs:
         run: |
           gem install bundler
           bundle install
-          bundle exec rails test
+          bundle exec rake test
