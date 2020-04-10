@@ -18,14 +18,16 @@ jobs:
       - name: Setup Redis
         run: |
           sudo apt-get install redis-server
-      - name: Start Redis
+      - name: Stop|Start Redis
         run: |
           sudo service redis-server stop
           redis-server --daemonize yes
-      - name: Rails Test
+      - name: Bundler
         run: |
           gem install bundler
           bundle install
+      - name: Rails Test
+        run: |
           bundle exec rake test
       - name: Stop Redis
         run: |
