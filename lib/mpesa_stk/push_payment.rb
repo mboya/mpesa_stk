@@ -22,19 +22,20 @@ module MpesaStk
     end
 
     private
-      def url
-        "#{ENV['base_url']}#{ENV['process_request_url']}"
-      end
 
-      def headers
-        headers = {
+    def url
+      "#{ENV['base_url']}#{ENV['process_request_url']}"
+    end
+
+    def headers
+      headers = {
           "Authorization" => "Bearer #{token}",
           "Content-Type" => "application/json"
-        }
-      end
+      }
+    end
 
-      def body
-        {
+    def body
+      {
           BusinessShortCode: "#{ENV['business_short_code']}",
           Password: generate_password,
           Timestamp: "#{timestamp}",
@@ -46,25 +47,25 @@ module MpesaStk
           CallBackURL: "#{ENV['callback_url']}",
           AccountReference: generate_bill_reference_number(5),
           TransactionDesc: generate_bill_reference_number(5)
-        }.to_json
-      end
+      }.to_json
+    end
 
-      def generate_bill_reference_number(number)
-        charset = Array('A'..'Z') + Array('a'..'z')
-        Array.new(number) { charset.sample }.join
-      end
+    def generate_bill_reference_number(number)
+      charset = Array('A'..'Z') + Array('a'..'z')
+      Array.new(number) { charset.sample }.join
+    end
 
-      def timestamp
-        DateTime.now.strftime("%Y%m%d%H%M%S").to_i
-      end
+    def timestamp
+      DateTime.now.strftime("%Y%m%d%H%M%S").to_i
+    end
 
-      # shortcode
-      # passkey
-      # timestamp
-      def generate_password
-        key = "#{ENV['business_short_code']}#{ENV['business_passkey']}#{timestamp}"
-        Base64.encode64(key).split("\n").join
-      end
+    # shortcode
+    # passkey
+    # timestamp
+    def generate_password
+      key = "#{ENV['business_short_code']}#{ENV['business_passkey']}#{timestamp}"
+      Base64.encode64(key).split("\n").join
+    end
 
   end
 end

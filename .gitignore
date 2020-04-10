@@ -11,3 +11,6 @@
 .DS_Store
 *.gem
 dump.rdb
+
+.idea/
+.rakeTasks
