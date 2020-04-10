@@ -17,7 +17,7 @@ jobs:
           ruby-version: 2.6
       - name: Setup Redis
         run: |
-          apt-get install redis-server
+          sudo apt-get install redis-server
       - name: Start Redis
         run: |
           /etc/init.d/redis-server start
