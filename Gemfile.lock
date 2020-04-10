@@ -14,7 +14,7 @@ GEM
     coderay (1.1.2)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
-    dotenv (2.2.1)
+    dotenv (2.7.5)
     hashdiff (1.0.1)
     httparty (0.18.0)
       mime-types (~> 3.0)
@@ -54,7 +54,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler
-  dotenv (= 2.2.1)
+  dotenv (= 2.7.5)
   minitest (~> 5.0)
   mpesa_stk!
   pry (~> 0.10.4)
