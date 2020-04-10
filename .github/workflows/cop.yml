@@ -15,8 +15,17 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.6
+      - name: Setup Redis
+        run: |
+          apt install redis-server
+      - name: Start Redis
+        run: |
+          /etc/init.d/redis-server start
       - name: Rails Test
         run: |
           gem install bundler
           bundle install
           bundle exec rake test
+      - name: Stop Redis
+        run: |
+          /etc/init.d/redis-server stop
