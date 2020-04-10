@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency 'httparty', '~> 0.15.6'
+  spec.add_dependency 'httparty', '>= 0.15.6', '< 0.19.0'
   spec.add_dependency 'redis-rack', '~> 2.0', '>= 2.0.2'
   spec.add_dependency 'redis-namespace', '~> 1.5', '>= 1.5.3'
 
@@ -32,5 +32,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry', '~> 0.10.4'
   spec.add_development_dependency 'pry-nav', '~> 0.2.4'
   spec.add_development_dependency 'webmock', '~> 3.0', '>= 3.0.1'
-  spec.add_development_dependency "dotenv", "2.2.1"
+  spec.add_development_dependency "dotenv", "2.7.5"
 end
