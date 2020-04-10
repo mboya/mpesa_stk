@@ -21,7 +21,7 @@ jobs:
       - name: Start Redis
         run: |
           sudo service redis-server stop
-          redis-server
+          redis-server --daemonize yes
       - name: Rails Test
         run: |
           gem install bundler
