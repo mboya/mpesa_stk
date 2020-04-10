@@ -17,6 +17,7 @@ jobs:
           ruby-version: 2.6
       - name: Setup Redis
         run: |
+          sudo apt-get uninstall redis-server
           sudo apt-get install redis-server
       - name: Start Redis
         run: |
@@ -28,4 +29,4 @@ jobs:
           bundle exec rake test
       - name: Stop Redis
         run: |
-          /etc/init.d/redis-server stop
+          sudo /etc/init.d/redis-server stop
