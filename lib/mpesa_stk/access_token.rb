@@ -4,14 +4,14 @@ require 'redis'
 module MpesaStk
   class AccessToken
     class << self
-      def call
-        new.access_token
+      def call(key = nil, secret = nil)
+        new(key, secret).access_token
       end
     end
 
-    def initialize
-      @key = ENV['key']
-      @secret = ENV['secret']
+    def initialize(key = nil, secret = nil)
+      @key = key.nil? ? ENV['key'] : key
+      @secret = secret.nil? ? ENV['secret'] : secret
       @redis = Redis.new
 
       load_from_redis
