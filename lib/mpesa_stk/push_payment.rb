@@ -10,7 +10,7 @@ module MpesaStk
 
     attr_reader :token, :amount, :phone_number
 
-    def initialize amount, phone_number
+    def initialize(amount, phone_number)
       @token = MpesaStk::AccessToken.call
       @amount = amount
       @phone_number = phone_number
@@ -28,25 +28,25 @@ module MpesaStk
     end
 
     def headers
-      headers = {
-          "Authorization" => "Bearer #{token}",
-          "Content-Type" => "application/json"
+      {
+        "Authorization" => "Bearer #{token}",
+        "Content-Type" => "application/json"
       }
     end
 
     def body
       {
-          BusinessShortCode: "#{ENV['business_short_code']}",
-          Password: generate_password,
-          Timestamp: "#{timestamp}",
-          TransactionType: "CustomerPayBillOnline",
-          Amount: "#{amount}",
-          PartyA: "#{phone_number}",
-          PartyB: "#{ENV['business_short_code']}",
-          PhoneNumber: "#{phone_number}",
-          CallBackURL: "#{ENV['callback_url']}",
-          AccountReference: generate_bill_reference_number(5),
-          TransactionDesc: generate_bill_reference_number(5)
+        BusinessShortCode: "#{ENV['business_short_code']}",
+        Password: generate_password,
+        Timestamp: "#{timestamp}",
+        TransactionType: transaction_type,
+        Amount: "#{amount}",
+        PartyA: "#{phone_number}",
+        PartyB: transaction_code,
+        PhoneNumber: "#{phone_number}",
+        CallBackURL: "#{ENV['callback_url']}",
+        AccountReference: generate_bill_reference_number(5),
+        TransactionDesc: generate_bill_reference_number(5)
       }.to_json
     end
 
@@ -57,6 +57,16 @@ module MpesaStk
 
     def timestamp
       DateTime.now.strftime("%Y%m%d%H%M%S").to_i
+    end
+
+    def transaction_type
+      return 'CustomerBuyGoodsOnline' unless ENV['party_b'].nil?
+      'CustomerPayBillOnline'
+    end
+
+    def transaction_code
+      return "#{ENV['party_b']}" unless ENV['party_b'].nil?
+      "#{ENV['business_short_code']}"
     end
 
     # shortcode
