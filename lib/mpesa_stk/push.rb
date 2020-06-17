@@ -37,25 +37,25 @@ module MpesaStk
     end
 
     def headers
-      headers = {
-          "Authorization" => "Bearer #{token}",
-          "Content-Type" => "application/json"
+      {
+        "Authorization" => "Bearer #{token}",
+        "Content-Type" => "application/json"
       }
     end
 
     def body
       {
-          BusinessShortCode: get_business_short_code,
-          Password: generate_password,
-          Timestamp: "#{timestamp}",
-          TransactionType: transaction_type,
-          Amount: "#{amount}",
-          PartyA: "#{phone_number}",
-          PartyB: get_till_number,
-          PhoneNumber: "#{phone_number}",
-          CallBackURL: get_callback_url,
-          AccountReference: generate_bill_reference_number(5),
-          TransactionDesc: generate_bill_reference_number(5)
+        BusinessShortCode: get_business_short_code,
+        Password: generate_password,
+        Timestamp: "#{timestamp}",
+        TransactionType: transaction_type,
+        Amount: "#{amount}",
+        PartyA: "#{phone_number}",
+        PartyB: get_till_number,
+        PhoneNumber: "#{phone_number}",
+        CallBackURL: get_callback_url,
+        AccountReference: generate_bill_reference_number(5),
+        TransactionDesc: generate_bill_reference_number(5)
       }.to_json
     end
 

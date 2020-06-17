@@ -73,14 +73,14 @@ module MpesaStk
 
     def headers
       encode = encode_credentials @key, @secret
-      headers = {
-          "Authorization" => "Basic #{encode}"
+      {
+        "Authorization" => "Basic #{encode}"
       }
     end
 
     def encode_credentials key, secret
       credentials = "#{key}:#{secret}"
-      encoded_credentials = Base64.encode64(credentials).split("\n").join
+      Base64.encode64(credentials).split("\n").join
     end
   end
 end
