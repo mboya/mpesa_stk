@@ -23,6 +23,14 @@ This gem has a [Redis](https://redis.io/) dependency, so make sure it running
 ```ruby
 $ redis-server
 ```
+You can use command line to determine if redis is running:
+```ruby
+redis-cli ping
+```
+you should get back
+```ruby
+PONG
+```
 
 you need to setup your environment variables, checkout `.sample.env` for the values you need.
 or run
@@ -36,11 +44,18 @@ secret=""
 business_short_code=""
 business_passkey=""
 callback_url=""
+till_number=""
 ```
 
 * `key` and `secret` of the app created on your [developer account](https://developer.safaricom.co.ke/user/me/apps).
 * `business_short_code`  and `business_pass_key` this can be found in [Test Credentials](https://developer.safaricom.co.ke/test_credentials).
 * `callback_url` the url of your application where response will be sent. `make sure its a reachable/active url`
+
+`Prod:`
+
+when going live there information will be sent to your email.
+
+for `buy_goods` push  `business_short_code` will be equivalent to `store number` and `till_number` will remain as is.
 
 ### Testing out the gem in an actual Rails application
 
@@ -54,18 +69,39 @@ https://github.com/mboya/stk
 #### Sample application
 Check out a rails sample application [here](https://github.com/mboya/stk)
 
-### Testing the gem on the console
+### Testing the gem on the console/app
+When running the gem on a single safaricom app.
 
 ```ruby
 $ irb
-```
-
-```ruby
 2.5.0 :001 > require 'mpesa_stk'
+2.5.0 :002 > MpesaStk::PushPayment.call("500", "<YOUR PHONE NUMBER: 254711222333>")
 ```
 
+When running the app on multiple safaricom apps, within the same project.
 ```ruby
-2.5.0 :002 > MpesaStk::PushPayment.call("500", "<YOUR PHONE NUMBER: 254711222333>")
+$ irb
+2.5.3 :001 > require 'mpesa_stk'
+2.5.3 :002 > hash = Hash.new
+2.5.3 :003 > 
+2.5.3 :004 > hash['key'] = key
+2.5.3 :005 > hash['secret'] = secret
+2.5.3 :006 > hash['business_short_code'] = business_short_code
+2.5.3 :007 > hash['business_passkey'] = business_passkey
+2.5.3 :008 > hash['callback_url'] = callback_url
+2.5.3 :009 > hash['till_number'] = till_number 
+```
+for STK push
+```ruby
+2.5.3 :010 > MpesaStk::Push.pay_bill('05', "<YOUR PHONE NUMBER: 254711222333>", hash)
+```
+for Till Number push
+```ruby
+2.5.3 :010 > MpesaStk::Push.buy_goods('05', "<YOUR PHONE NUMBER: 254711222333>", hash)
+```
+possible error format if the request is not successful
+```hash
+{"requestId"=>"13022-8633727-1", "errorCode"=>"500.001.1001", "errorMessage"=>"Error Message"}
 ```
 
 expected irb output after the command
@@ -83,12 +119,21 @@ the above response means the response has been successfully sent to Safaricom fo
 
 ### Mpesa Checkout/Express
 This is the expected output on the mobile phone
+
 ![alt tag](./bin/index.jpeg)
 
 ### Callback url
 
 After the pin code is entered on the checkout/express prompt. you will receive a request on the provided  `callback_url` with the status of the action
 
+sample payload that you will be getting on your callback
+```hash
+{"Body"=>{"stkCallback"=>{"MerchantRequestID"=>"3968-94214-1", "CheckoutRequestID"=>"ws_CO_160620191218268004", "ResultCode"=>0, "ResultDesc"=>"The service request is processed successfully.", 
+"CallbackMetadata"=>{"Item"=>[{"Name"=>"Amount", "Value"=>"05"}, {"Name"=>"MpesaReceiptNumber", "Value"=>"OFG4Z5EE9Y"}, {"Name"=>"TransactionDate", "Value"=>20190616121848}, 
+{"Name"=>"PhoneNumber", "Value"=>254711222333}]}}}, "push"=>{"Body"=>{"stkCallback"=>{"MerchantRequestID"=>"3968-94214-1", "CheckoutRequestID"=>"ws_CO_160620191218268004", "ResultCode"=>0, 
+"ResultDesc"=>"The service request is processed successfully.", "CallbackMetadata"=>{"Item"=>[{"Name"=>"Amount", "Value"=>"05"}, {"Name"=>"MpesaReceiptNumber", "Value"=>"OFG4Z5EE9Y"}, {"Name"=>"TransactionDate", 
+"Value"=>20190616121848}, {"Name"=>"PhoneNumber", "Value"=>254711222333}]}}}}}
+```
 
 ## Development
 
