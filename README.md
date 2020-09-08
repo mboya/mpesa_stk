@@ -135,6 +135,42 @@ sample payload that you will be getting on your callback
 "Value"=>20190616121848}, {"Name"=>"PhoneNumber", "Value"=>254711222333}]}}}}}
 ```
 
+### Query Request
+This API allows you to check the status of a Lipa Na M-Pesa Online Payment.
+
+```ruby
+$ irb
+2.5.3 :001 > require 'mpesa_stk'
+2.5.0 :002 > MpesaStk::PushPayment.call("500", "<YOUR PHONE NUMBER: 254711222333>")
+```
+expected irb output after the command
+```hash
+  {
+    "MerchantRequestID"=>"11112-111619600-1", "CheckoutRequestID"=>"ws_CO_080920202234262864", "ResponseCode"=>"0", "ResponseDescription"=>"Success. Request accepted for processing", "CustomerMessage"=>"Success. Request accepted for processing"
+  }
+```
+Now query the request status, the `MpesaStk::QueryPayment.call()` functionality takes a `CheckoutRequestID` as its only parameter as shown below.
+```ruby
+2.5.0 :002 > MpesaStk::QueryPayment.call("ws_CO_080920202234262864")
+```
+expected irb output after the command
+```hash
+  {
+    "ResponseCode"=>"0", "ResponseDescription"=>"The service request has been accepted successsfully", "MerchantRequestID"=>"11112-111619600-1", "CheckoutRequestID"=>"ws_CO_080920202234262864", "ResultCode"=>"0", "ResultDesc"=>"The service request is processed successfully."
+  }
+```
+Incase the user canceled the request you get an output like below:
+
+```hash
+  {
+    "ResponseCode"=>"0", "ResponseDescription"=>"The service request has been accepted successsfully", "MerchantRequestID"=>"28282-53573408-1", "CheckoutRequestID"=>"ws_CO_080920202236494435", "ResultCode"=>"1032", "ResultDesc"=>"Request cancelled by user"
+  }
+```
+
+
+
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
