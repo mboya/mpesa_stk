@@ -1,6 +1,7 @@
 require "mpesa_stk/access_token"
 
 module MpesaStk
+  module LipaMpesa
   class QueryPayment
     class << self
       def call(checkout_request_id)
@@ -50,4 +51,5 @@ module MpesaStk
         Base64.encode64(key).split("\n").join
       end
   end
+end
 end
