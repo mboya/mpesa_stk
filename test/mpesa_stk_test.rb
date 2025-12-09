@@ -3,7 +3,7 @@ require "test_helper"
 class MpesaStkTest < Minitest::Test
   def test_that_it_has_a_version_number
     refute_nil ::MpesaStk::VERSION
-    assert_equal "1.3", ::MpesaStk::VERSION
+    assert_equal "2.0.0", ::MpesaStk::VERSION
   end
 
   def test_module_is_defined
