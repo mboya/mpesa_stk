@@ -1,22 +1,22 @@
 name: Cop
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.1"
+          bundler-cache: true
+
       - name: Rubocop checks
         uses: gimenete/rubocop-action@1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/checkout@v2
-      - name: Set up Ruby 2.6
-        uses: actions/setup-ruby@v1
-        with:
-          ruby-version: 2.6
-      - name: Rails Test
-        run: |
-          gem install bundler
-          bundle install
-          bundle exec rake test
+      - name: Run tests
+        run: bundle exec rake test
